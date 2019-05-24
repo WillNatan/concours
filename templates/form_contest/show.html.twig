@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormContest{% endblock %}
+
+{% block body %}
+    <h1>FormContest</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ form_contest.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ form_contest.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ form_contest.prenom }}</td>
+            </tr>
+            <tr>
+                <th>BirthdayDate</th>
+                <td>{{ form_contest.birthdayDate ? form_contest.birthdayDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ form_contest.tel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ form_contest.email }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ form_contest.sexe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('form_contest_index') }}">back to list</a>
+
+    <a href="{{ path('form_contest_edit', {'id': form_contest.id}) }}">edit</a>
+
+    {{ include('form_contest/_delete_form.html.twig') }}
+{% endblock %}

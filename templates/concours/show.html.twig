@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concours{% endblock %}
+
+{% block body %}
+    <h1>Concours</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ concour.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ concour.name }}</td>
+            </tr>
+            <tr>
+                <th>Link</th>
+                <td>{{ concour.link }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('concours_index') }}">back to list</a>
+
+    <a href="{{ path('concours_edit', {'link': concour.link}) }}">edit</a>
+
+    {{ include('concours/_delete_form.html.twig') }}
+{% endblock %}

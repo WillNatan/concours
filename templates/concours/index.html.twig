@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Concours index{% endblock %}
+
+{% block body %}
+    <h1>Concours index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Link</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for concour in concours %}
+            <tr>
+                <td>{{ concour.id }}</td>
+                <td>{{ concour.name }}</td>
+                <td>{{ concour.link }}</td>
+                <td>
+                    <a href="{{ path('concours_show', {'link': concour.link}) }}">show</a>
+                    <a href="{{ path('concours_edit', {'link': concour.link}) }}">edit</a>
+                    <a href="{{ path('form_contest_new', {'concours': concour.name}) }}">add new</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('concours_new') }}">Create new</a>
+{% endblock %}

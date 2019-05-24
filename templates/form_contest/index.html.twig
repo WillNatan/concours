@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FormContest index{% endblock %}
+
+{% block body %}
+    <h1>FormContest index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>BirthdayDate</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>Sexe</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for form_contest in form_contests %}
+            <tr>
+                <td>{{ form_contest.id }}</td>
+                <td>{{ form_contest.nom }}</td>
+                <td>{{ form_contest.prenom }}</td>
+                <td>{{ form_contest.birthdayDate ? form_contest.birthdayDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ form_contest.tel }}</td>
+                <td>{{ form_contest.email }}</td>
+                <td>{{ form_contest.sexe }}</td>
+                <td>
+                    <a href="{{ path('form_contest_show', {'id': form_contest.id}) }}">show</a>
+                    <a href="{{ path('form_contest_edit', {'id': form_contest.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('form_contest_new') }}">Create new</a>
+{% endblock %}
